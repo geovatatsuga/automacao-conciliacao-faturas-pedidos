@@ -1,0 +1,13 @@
+.git/
+.github/
+.artifacts/
+node_modules/
+dashboard/node_modules/
+dashboard/dist/
+rpa/
+dados/
+docs/
+scripts/
+tests/
+*.xlsx
+*.pdf

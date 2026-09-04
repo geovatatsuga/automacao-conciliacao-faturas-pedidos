@@ -88,6 +88,18 @@ npm run dev
 
 Acesse `http://localhost:5173` no navegador. Para gerar a versão de produção, execute `npm run build`.
 
+### Publicar no Vercel
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgeovatatsuga%2Fautomacao-conciliacao-faturas-pedidos)
+
+O arquivo [`vercel.json`](vercel.json) já contém os comandos de instalação, build e a pasta de saída. Para publicar:
+
+1. Clique em **Deploy with Vercel** ou importe este repositório no painel do Vercel.
+2. Mantenha o diretório raiz do projeto como `./`.
+3. Clique em **Deploy**; nenhuma variável de ambiente é necessária.
+
+As próximas alterações enviadas à branch `main` poderão gerar novas versões automaticamente no Vercel.
+
 ## Cenários validados
 
 - caminho feliz com aprovação automática;
