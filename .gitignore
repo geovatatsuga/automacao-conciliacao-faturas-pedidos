@@ -6,3 +6,10 @@ __pycache__/
 *.pyc
 node_modules/
 *.inspect.ndjson
+rpa/ConciliaFatura/.local/
+rpa/ConciliaFatura/.objects/
+rpa/ConciliaFatura/.project/
+rpa/ConciliaFatura/.settings/
+rpa/ConciliaFatura/.tmh/
+rpa/ConciliaFatura/project.uiproj
+rpa/ConciliaFatura/entry-points.json

@@ -1,6 +1,0 @@
-{
-  "Name": "ConciliaFatura",
-  "ProjectType": "Process",
-  "Description": "Automação de conciliação de faturas e pedidos.",
-  "MainFile": "Main.xaml"
-}
