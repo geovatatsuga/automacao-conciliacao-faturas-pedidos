@@ -1,0 +1,7 @@
+cnpj,razao_social,status,email,categoria
+12.345.678/0001-90,NovaCore Tecnologia Ltda,ATIVO,contato@novacore.demo,TI
+23.456.789/0001-01,Atlas Cloud Serviços,ATIVO,financeiro@atlas.demo,Cloud
+34.567.890/0001-12,Lumina Sistemas,ATIVO,contato@lumina.demo,Software
+45.678.901/0001-23,Vertex Consulting,ATIVO,contato@vertex.demo,Consultoria
+56.789.012/0001-34,Orion Facilities,BLOQUEADO,contato@orion.demo,Facilities
+67.890.123/0001-45,Nexa Solutions Brasil,INATIVO,contato@nexa.demo,Serviços

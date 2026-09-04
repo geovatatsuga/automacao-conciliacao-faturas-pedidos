@@ -1,0 +1,8 @@
+Fatura: FAT-2026-00199
+CNPJ: 45.678.901/0001-23
+Fornecedor: Vertex Consulting
+Pedido: PO-2026-0428
+Valor Total: R$ 7,000.00
+Data Emissão: 01/09/2026
+Data Vencimento: 30/09/2026
+Cenário: APROVADA

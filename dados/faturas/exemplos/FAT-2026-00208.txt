@@ -1,0 +1,8 @@
+Fatura: FAT-2026-00208
+CNPJ: 56.789.012/0001-34
+Fornecedor: Orion Facilities
+Pedido: PO-2026-0433
+Valor Total: R$ 10,750.00
+Data Emissão: 01/09/2026
+Data Vencimento: 30/09/2026
+Cenário: FORNECEDOR_BLOQUEADO

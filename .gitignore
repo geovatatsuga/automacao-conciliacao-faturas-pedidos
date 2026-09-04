@@ -1,0 +1,8 @@
+.local/
+**/project.user.json
+**/.screenshots/
+__pycache__/
+.pytest_cache/
+*.pyc
+node_modules/
+*.inspect.ndjson

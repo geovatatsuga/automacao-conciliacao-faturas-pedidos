@@ -1,0 +1,2 @@
+timestamp,numero_fatura,numero_pedido,cnpj,fornecedor,valor_fatura,valor_pedido,diferenca,resultado,motivo,robot_name,duracao_segundos
+2026-08-31T10:00:00,FAT-2026-00192,PO-2026-0421,12.345.678/0001-90,NovaCore Tecnologia Ltda,1750,1750,0,APROVADA,PROCESSAMENTO_ANTERIOR,ConciliaFatura,4.2

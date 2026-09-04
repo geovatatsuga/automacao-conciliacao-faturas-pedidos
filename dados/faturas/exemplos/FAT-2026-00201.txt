@@ -1,0 +1,8 @@
+Fatura: FAT-2026-00201
+CNPJ: 23.456.789/0001-01
+Fornecedor: Atlas Cloud Serviços
+Pedido: PO-2026-0430
+Valor Total: R$ 8,500.00
+Data Emissão: 01/09/2026
+Data Vencimento: 30/09/2026
+Cenário: APROVADA

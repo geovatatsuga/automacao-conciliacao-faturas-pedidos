@@ -1,0 +1,8 @@
+Fatura: FAT-2026-00192
+CNPJ: 12.345.678/0001-90
+Fornecedor: NovaCore Tecnologia Ltda
+Pedido: PO-2026-0421
+Valor Total: R$ 1,750.00
+Data Emissão: 01/09/2026
+Data Vencimento: 30/09/2026
+Cenário: FATURA_DUPLICADA

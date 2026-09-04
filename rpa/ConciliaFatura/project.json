@@ -1,0 +1,16 @@
+{
+  "name": "ConciliaFatura",
+  "description": "Automação de conciliação de faturas e pedidos.",
+  "main": "Main.xaml",
+  "dependencies": {
+    "UiPath.System.Activities": "[24.10.7]",
+    "UiPath.Excel.Activities": "[2.24.4]",
+    "UiPath.Mail.Activities": "[1.23.3]",
+    "UiPath.PDF.Activities": "[3.20.0]",
+    "UiPath.UIAutomation.Activities": "[24.10.8]"
+  },
+  "schemaVersion": "4.0",
+  "studioVersion": "2024.10.7.0",
+  "projectVersion": "1.0.0",
+  "runtimeOptions": { "autoDispose": false, "isPausable": true, "excludedLoggedData": ["*password*"] }
+}

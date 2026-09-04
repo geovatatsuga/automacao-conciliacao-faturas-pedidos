@@ -1,0 +1,8 @@
+Fatura: FAT-2026-00206
+CNPJ: 34.567.890/0001-12
+Fornecedor: Lumina Sistemas
+Pedido: PO-2026-0431
+Valor Total: R$ 9,350.00
+Data Emissão: 01/09/2026
+Data Vencimento: 30/09/2026
+Cenário: DIVERGENCIA_VALOR
