@@ -11,6 +11,7 @@
 
 [![Testes](https://img.shields.io/badge/testes-3%20aprovados-22C55E?style=flat-square)](tests/test_regras.py)
 [![Licença MIT](https://img.shields.io/badge/licença-MIT-64748B?style=flat-square)](LICENSE)
+[![Dashboard online](https://img.shields.io/badge/dashboard-online-22C55E?style=flat-square&logo=vercel&logoColor=white)](https://dashboard-beta-snowy-87.vercel.app/)
 [![Deploy Vercel](https://img.shields.io/badge/publicar-Vercel-000000?style=flat-square&logo=vercel)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fgeovatatsuga%2Fautomacao-conciliacao-faturas-pedidos)
 
 Uma solução demonstrativa que recebe uma fatura em PDF, confere pedido, fornecedor, valor e duplicidade, registra o resultado e gera evidências do processamento.
@@ -32,6 +33,8 @@ O projeto representa uma rotina de **Contas a Pagar** automatizada. O processo m
 > **Importante:** o dashboard é uma simulação visual para apresentação. A automação real está nos workflows UiPath, iniciando pelo [`Main.xaml`](rpa/ConciliaFatura/Main.xaml).
 
 ## Demonstração interativa
+
+Dashboard publicado: [https://dashboard-beta-snowy-87.vercel.app/](https://dashboard-beta-snowy-87.vercel.app/)
 
 O dashboard permite selecionar diferentes faturas e acompanhar visualmente o robô:
 
