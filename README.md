@@ -1,57 +1,118 @@
-# ConciliaFatura RPA
+# Automação de Conciliação de Faturas e Pedidos
 
-## Automação de Conciliação de Faturas e Pedidos
+> RPA desenvolvido em UiPath para receber faturas em PDF, cruzar dados com pedidos de compra e fornecedores, aplicar regras financeiras e registrar o resultado com rastreabilidade.
 
-**DATA • AUTOMATION • AI** · Jeová Anderson
+## Resumo
 
-Automação RPA com UiPath para receber faturas, extrair dados de PDFs digitais, validar fornecedor e pedido, conciliar valores, detectar duplicidade, persistir resultados em Excel e produzir evidências e relatório.
+Este projeto automatiza uma rotina financeira que normalmente exige abertura manual de documentos, consulta de planilhas e conferência de valores. O robô reduz esse processo de aproximadamente **15 minutos para cerca de 2 segundos** no ambiente de demonstração.
 
-## Problema, processo e resultado
+Além da automação real em UiPath, o repositório contém um **simulador web interativo** para apresentação do fluxo, dos resultados e da arquitetura técnica.
 
-Áreas financeiras recebem faturas por e-mail e fazem conferências repetitivas entre PDF, pedido e controle Excel. O fluxo reduz esta operação a uma fila rastreável: entrada → extração → validação → conciliação → controle → notificação/relatório.
+## Demonstração visual
 
-Stack: **UiPath • Outlook • Excel • PDF • DataTables • Regex**.
+Na pasta [`dashboard`](dashboard/) há uma interface construída em React que permite:
 
-## Demonstração local
+- selecionar diferentes faturas de teste;
+- acompanhar cada etapa do processamento;
+- visualizar o pseudocódigo executado;
+- conferir o checklist das regras de negócio;
+- explorar um mapa técnico dos componentes da solução.
 
-1. Abra `rpa/ConciliaFatura/Config/Config.xlsx` e mantenha `MAIL_MODE=LOCAL_DEMO`.
-2. Copie PDFs sintéticos de `dados/faturas/exemplos` para `rpa/ConciliaFatura/Data/Entrada`.
-3. Abra `rpa/ConciliaFatura/project.json` no UiPath Studio e execute `Main.xaml`.
-4. Consulte `dados/resultados/controle_conciliacao.xlsx` e `Data/Relatorios`.
+> O dashboard é uma simulação para apresentação. A execução real acontece no UiPath Studio por meio do arquivo [`Main.xaml`](rpa/ConciliaFatura/Main.xaml).
 
-## Outlook Mode
+## Fluxo automatizado
 
-**CONFIGURATION REQUIRED.** Configure um perfil Outlook Desktop no Studio, altere `MAIL_MODE` para `OUTLOOK`, informe pastas e filtro `FATURA PARA CONCILIACAO`. Nenhuma credencial ou e-mail real está versionado.
+```mermaid
+flowchart LR
+    A[Caixa de entrada<br/>E-mail + PDF] --> B[UiPath Robot<br/>Main.xaml]
+    B --> C[Extração dos dados]
+    C --> D[(Pedidos e<br/>fornecedores)]
+    D --> E{Regras de<br/>conciliação}
+    E -->|Dados compatíveis| F[Fatura aprovada]
+    E -->|Divergência| G[Exceção de negócio]
+    F --> H[(Controle Excel)]
+    G --> H
+    H --> I[PDF processado<br/>+ relatório CSV/HTML]
+```
 
-## Regras e exceções
+O [mapa mental completo](docs/mapa-mental.md) explica os arquivos, entradas, regras e saídas de cada componente.
 
-As regras BR001–BR010 estão em [docs/regras-de-negocio.md](docs/regras-de-negocio.md). Divergência, duplicidade, fornecedor não ativo, CNPJ e pedido inválidos são Business Exceptions e não recebem retry. Falhas de PDF/Excel/Outlook/pasta são System Exceptions com até três tentativas e evidência.
+## O que o robô faz
 
-## Cenários disponíveis
+1. Localiza a fatura em PDF na pasta de entrada.
+2. Extrai número da fatura, pedido, CNPJ, fornecedor e valor.
+3. Consulta as bases de pedidos e fornecedores.
+4. Verifica duplicidade e aplica as regras de negócio.
+5. Classifica a fatura como aprovada, divergente ou exceção.
+6. Atualiza o controle em Excel e CSV.
+7. Move o PDF para a pasta de processados.
+8. Gera um relatório consolidado em CSV e HTML.
 
-São 20 casos sintéticos: 10 aprovados, 2 duplicados, 2 pedidos inexistentes, 2 valores divergentes, 1 fornecedor bloqueado, 1 CNPJ divergente, 1 dado incompleto e 1 PDF corrompido. A relação completa está em `dados/faturas/cenarios.csv`.
+## Resultados possíveis
 
-## Maturidade
-
-| Componente | Status |
+| Resultado | Regra aplicada |
 |---|---|
-| UiPath Workflow | STATIC VALIDATION ONLY |
-| Execução UiPath | REQUER UiPath Studio |
-| Local Demo Mail | DEMO READY (arquivos sintéticos) |
-| Outlook | CONFIGURATION REQUIRED |
-| Excel Reconciliation | TESTED (arquivos e dados) |
-| PDF Extraction | TESTED (PDFs digitais gerados) |
-| Exception Handling | TESTED por regras equivalentes em Python |
-| Email Sending | CONFIGURATION REQUIRED |
+| `APROVADA` | Pedido, fornecedor e valor foram conciliados. |
+| `FATURA_DUPLICADA` | O número da fatura já existe no controle. |
+| `PEDIDO_NAO_ENCONTRADO` | O pedido informado não existe na base. |
+| `FORNECEDOR_INVALIDO` | O fornecedor não está apto para aprovação. |
+| `DIVERGENCIA_VALOR` | O valor da fatura difere do pedido. |
 
-## Qualidade e CI
+## Estrutura do repositório
 
-O GitHub Actions gera dados demo, valida XML/XAML e estrutura, e executa testes Python. Ele **não executa UiPath**. Veja [docs/testes.md](docs/testes.md).
+```text
+├── rpa/ConciliaFatura/       Projeto UiPath e workflows XAML
+├── dashboard/                Simulador visual em React
+├── dados/                    Bases e PDFs sintéticos para testes
+├── docs/                     Documentação funcional e técnica
+├── scripts/                  Geração e validação dos dados
+└── tests/                    Testes automatizados das regras
+```
 
-## Estrutura
+## Executar a automação
 
-`rpa/ConciliaFatura` contém o orquestrador, Framework, componentes e Config. `dados` contém somente dados fictícios. `docs` descreve processo, arquitetura, regras e exceções.
+### UiPath
 
-## Roadmap
+1. Abra [`rpa/ConciliaFatura/project.json`](rpa/ConciliaFatura/project.json) no UiPath Studio.
+2. Copie um PDF de `dados/faturas/exemplos` para `rpa/ConciliaFatura/Data/Entrada`.
+3. Execute [`Main.xaml`](rpa/ConciliaFatura/Main.xaml).
+4. Consulte o resultado em `dados/resultados/controle_conciliacao.xlsx`.
 
-Adicionar seletores Outlook testados, atividades PDF/Excel configuradas no Studio, capturas de execução, fila Orchestrator opcional e dashboard HTML de resumo.
+### Dashboard
+
+```bash
+cd dashboard
+npm install
+npm run dev
+```
+
+Acesse `http://localhost:5173` no navegador. Para gerar a versão de produção, execute `npm run build`.
+
+## Cenários validados
+
+- caminho feliz com aprovação automática;
+- fatura duplicada;
+- pedido inexistente;
+- fornecedor inválido;
+- divergência de valor;
+- documento corrompido.
+
+Todos os PDFs, fornecedores e pedidos deste projeto são **dados sintéticos**, criados exclusivamente para demonstração.
+
+## Tecnologias
+
+`UiPath Studio` · `XAML` · `Python` · `openpyxl` · `Excel` · `CSV` · `React` · `Vite`
+
+## Documentação
+
+- [Arquitetura](docs/arquitetura.md)
+- [Mapa mental técnico](docs/mapa-mental.md)
+- [Processo atual — AS IS](docs/processo-as-is.md)
+- [Processo automatizado — TO BE](docs/processo-to-be.md)
+- [Regras de negócio](docs/regras-de-negocio.md)
+- [Estratégia de exceções](docs/estrategia-excecoes.md)
+- [Plano de testes](docs/testes.md)
+
+## Licença
+
+Distribuído sob a licença [MIT](LICENSE).

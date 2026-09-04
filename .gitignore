@@ -5,6 +5,8 @@ __pycache__/
 .pytest_cache/
 *.pyc
 node_modules/
+dashboard/dist/
+.artifacts/
 *.inspect.ndjson
 rpa/ConciliaFatura/.local/
 rpa/ConciliaFatura/.objects/
@@ -13,3 +15,6 @@ rpa/ConciliaFatura/.settings/
 rpa/ConciliaFatura/.tmh/
 rpa/ConciliaFatura/project.uiproj
 rpa/ConciliaFatura/entry-points.json
+rpa/ConciliaFatura/Data/Entrada/
+rpa/ConciliaFatura/Data/Processados/
+rpa/ConciliaFatura/Data/Relatorios/
