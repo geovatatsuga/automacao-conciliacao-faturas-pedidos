@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ui="http://schemas.uipath.com/workflow/activities">
   <Sequence DisplayName="ConciliaFatura RPA — Orquestrador">
     <Sequence.Variables><Variable x:TypeArguments="x:Int32" Name="processedCount" Default="0" /></Sequence.Variables>
-    <InvokeWorkflowFile DisplayName="Inicializar" WorkflowFileName="Framework/Inicializar.xaml" />
-    <InvokeWorkflowFile DisplayName="Obter próxima fatura" WorkflowFileName="Framework/ObterProximaFatura.xaml" />
-    <InvokeWorkflowFile DisplayName="Processar fatura" WorkflowFileName="Framework/ProcessarFatura.xaml" />
-    <InvokeWorkflowFile DisplayName="Finalizar e gerar relatório" WorkflowFileName="Framework/Finalizar.xaml" />
+    <ui:InvokeWorkflowFile DisplayName="Inicializar" WorkflowFileName="Framework/Inicializar.xaml" />
+    <ui:InvokeWorkflowFile DisplayName="Obter próxima fatura" WorkflowFileName="Framework/ObterProximaFatura.xaml" />
+    <ui:InvokeWorkflowFile DisplayName="Processar fatura" WorkflowFileName="Framework/ProcessarFatura.xaml" />
+    <ui:InvokeWorkflowFile DisplayName="Finalizar e gerar relatório" WorkflowFileName="Framework/Finalizar.xaml" />
   </Sequence>
 </Activity>

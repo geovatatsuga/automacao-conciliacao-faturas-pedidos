@@ -1,2 +1,37 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"><Sequence DisplayName="Extrair dados da fatura (PDF + Regex)"><Sequence.Variables><Variable x:TypeArguments="x:String" Name="pdfText" Default="&quot;Fatura: FAT-2026-00192&quot;" /><Variable x:TypeArguments="x:String" Name="numeroFatura" /></Sequence.Variables><Assign DisplayName="Regex número da fatura"><Assign.To><OutArgument x:TypeArguments="x:String">[numeroFatura]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdfText, &quot;(?im)Fatura\s*:\s*(FAT-\d{4}-\d{5})&quot;).Groups(1).Value]</InArgument></Assign.Value></Assign><WriteLine Text="[&quot;Número extraído: &quot; + numeroFatura]" /></Sequence></Activity>
+<Activity x:Class="{x:Null}" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Extrair dados da fatura (PDF + Regex)">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Default="&quot;Fatura: FAT-2026-00192&quot;" Name="pdfText" />
+      <Variable x:TypeArguments="x:String" Name="numeroFatura" />
+    </Sequence.Variables>
+    <Assign DisplayName="Regex número da fatura">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[numeroFatura]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[System.Text.RegularExpressions.Regex.Match(pdfText, "(?im)Fatura\s*:\s*(FAT-\d{4}-\d{5})").Groups(1).Value]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <WriteLine Text="[&quot;Número extraído: &quot; + numeroFatura]" />
+  </Sequence>
+</Activity>

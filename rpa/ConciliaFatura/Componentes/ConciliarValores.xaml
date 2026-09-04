@@ -1,2 +1,47 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"><Sequence DisplayName="Conciliar valores"><Sequence.Variables><Variable x:TypeArguments="x:Double" Name="valorFatura" Default="18450"/><Variable x:TypeArguments="x:Double" Name="saldoDisponivel" Default="18450"/><Variable x:TypeArguments="x:Double" Name="tolerancia" Default="1"/><Variable x:TypeArguments="x:Double" Name="diferenca"/><Variable x:TypeArguments="x:String" Name="resultado"/></Sequence.Variables><Assign><Assign.To><OutArgument x:TypeArguments="x:Double">[diferenca]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:Double">[Math.Abs(valorFatura-saldoDisponivel)]</InArgument></Assign.Value></Assign><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[resultado]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[If(valorFatura-saldoDisponivel &lt;= tolerancia, &quot;APROVADA&quot;, &quot;DIVERGENCIA_VALOR&quot;)]</InArgument></Assign.Value></Assign><WriteLine Text="[resultado + &quot; | diferença=&quot; + diferenca.ToString]" /></Sequence></Activity>
+<Activity x:Class="{x:Null}" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Linq</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Conciliar valores">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:Double" Default="18450" Name="valorFatura" />
+      <Variable x:TypeArguments="x:Double" Default="18450" Name="saldoDisponivel" />
+      <Variable x:TypeArguments="x:Double" Default="1" Name="tolerancia" />
+      <Variable x:TypeArguments="x:Double" Name="diferenca" />
+      <Variable x:TypeArguments="x:String" Name="resultado" />
+    </Sequence.Variables>
+    <Assign>
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Double">[diferenca]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Double">[Math.Abs(valorFatura-saldoDisponivel)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign>
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[resultado]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[If(valorFatura-saldoDisponivel &lt;= tolerancia, "APROVADA", "DIVERGENCIA_VALOR")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <WriteLine Text="[resultado + &quot; | diferença=&quot; + diferenca.ToString]" />
+  </Sequence>
+</Activity>

@@ -1,16 +1,54 @@
 {
   "name": "ConciliaFatura",
+  "projectId": "5d2a5552-f19f-4e53-b138-62a3b5d43d5b",
   "description": "Automação de conciliação de faturas e pedidos.",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.System.Activities": "[24.10.7]",
     "UiPath.Excel.Activities": "[2.24.4]",
-    "UiPath.Mail.Activities": "[1.23.3]",
-    "UiPath.PDF.Activities": "[3.20.0]",
+    "UiPath.Mail.Activities": "[1.23.11]",
+    "UiPath.PDF.Activities": "[3.20.2]",
+    "UiPath.System.Activities": "[24.10.7]",
     "UiPath.UIAutomation.Activities": "[24.10.8]"
   },
+  "webServices": [],
+  "entitiesStores": [],
   "schemaVersion": "4.0",
   "studioVersion": "2024.10.7.0",
   "projectVersion": "1.0.0",
-  "runtimeOptions": { "autoDispose": false, "isPausable": true, "excludedLoggedData": ["*password*"] }
+  "runtimeOptions": {
+    "autoDispose": false,
+    "netFrameworkLazyLoading": false,
+    "isPausable": true,
+    "isAttended": false,
+    "requiresUserInteraction": true,
+    "supportsPersistence": false,
+    "workflowSerialization": "DataContract",
+    "excludedLoggedData": [
+      "Private:*",
+      "*password*"
+    ],
+    "executionType": "Workflow",
+    "readyForPiP": false,
+    "startsInPiP": false,
+    "mustRestoreAllDependencies": false,
+    "pipType": "ChildSession"
+  },
+  "designOptions": {
+    "projectProfile": "Developement",
+    "outputType": "Process",
+    "libraryOptions": {
+      "privateWorkflows": []
+    },
+    "processOptions": {
+      "ignoredFiles": []
+    },
+    "fileInfoCollection": [],
+    "modernBehavior": false,
+    "saveToCloud": false
+  },
+  "expressionLanguage": "VisualBasic",
+  "isTemplate": false,
+  "templateProjectData": {},
+  "publishData": {},
+  "targetFramework": "Windows"
 }

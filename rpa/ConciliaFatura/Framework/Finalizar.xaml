@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"><Sequence DisplayName="Finalizar"><InvokeWorkflowFile WorkflowFileName="../Componentes/GerarRelatorio.xaml" /><WriteLine Text="[&quot;ConciliaFatura finalizado&quot;]" /></Sequence></Activity>
+<Activity xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:ui="http://schemas.uipath.com/workflow/activities"><Sequence DisplayName="Finalizar"><ui:InvokeWorkflowFile WorkflowFileName="../Componentes/GerarRelatorio.xaml" /><WriteLine Text="[&quot;ConciliaFatura finalizado&quot;]" /></Sequence></Activity>
