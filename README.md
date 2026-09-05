@@ -16,6 +16,10 @@
 
 Uma solução demonstrativa que recebe uma fatura em PDF, confere pedido, fornecedor, valor e duplicidade, registra o resultado e gera evidências do processamento.
 
+<br>
+
+<img src="docs/screenshots/demo.gif" alt="Demonstração da Automação de Conciliação de Faturas em Execução" width="100%" style="border-radius: 8px; border: 1px solid rgba(255,255,255,0.12);" />
+
 </div>
 
 ---

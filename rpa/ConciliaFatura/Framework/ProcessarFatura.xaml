@@ -1,36 +1,329 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Activity mc:Ignorable="sap sap2010" x:Class="ProcessarFatura" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:uea="clr-namespace:UiPath.Excel.Activities;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-  <TextExpression.NamespacesForImplementation><sco:Collection x:TypeArguments="x:String"><x:String>System</x:String><x:String>System.Data</x:String><x:String>System.Linq</x:String><x:String>System.IO</x:String><x:String>System.Globalization</x:String><x:String>System.Text.RegularExpressions</x:String><x:String>UiPath.Core</x:String><x:String>UiPath.Core.Activities</x:String><x:String>UiPath.Excel</x:String><x:String>UiPath.Excel.Model</x:String><x:String>UiPath.Excel.Activities.Business</x:String></sco:Collection></TextExpression.NamespacesForImplementation>
-  <TextExpression.ReferencesForImplementation><sco:Collection x:TypeArguments="AssemblyReference"><AssemblyReference>System.Activities</AssemblyReference><AssemblyReference>System.Collections</AssemblyReference><AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference><AssemblyReference>System.Data.Common</AssemblyReference><AssemblyReference>System.Data.DataSetExtensions</AssemblyReference><AssemblyReference>System.Linq</AssemblyReference><AssemblyReference>System.ObjectModel</AssemblyReference><AssemblyReference>System.Private.CoreLib</AssemblyReference><AssemblyReference>UiPath.System.Activities</AssemblyReference><AssemblyReference>UiPath.Excel.Activities</AssemblyReference><AssemblyReference>UiPath.Excel</AssemblyReference><AssemblyReference>UiPath.PDF.Activities</AssemblyReference></sco:Collection></TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Processar fatura ponta a ponta">
+<Activity mc:Ignorable="sap sap2010" x:Class="ProcessarFatura" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.PDF.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Processar fatura ponta a ponta" sap:VirtualizedContainerService.HintSize="897.2,4699.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="inputFolder" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Entrada" /><Variable x:TypeArguments="x:String" Name="processedFolder" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Processados" /><Variable x:TypeArguments="x:String" Name="sourcePdf" /><Variable x:TypeArguments="x:String" Name="processedPdf" />
-      <Variable x:TypeArguments="x:String" Name="pdfText" /><Variable x:TypeArguments="x:String" Name="numeroFatura" /><Variable x:TypeArguments="x:String" Name="numeroPedido" /><Variable x:TypeArguments="x:String" Name="cnpj" /><Variable x:TypeArguments="x:String" Name="fornecedor" /><Variable x:TypeArguments="x:String" Name="valorTexto" />
-      <Variable x:TypeArguments="x:Decimal" Name="valorFatura" /><Variable x:TypeArguments="x:Decimal" Name="valorPedido" /><Variable x:TypeArguments="x:Decimal" Name="diferenca" /><Variable x:TypeArguments="x:String" Name="resultado" Default="ERRO" /><Variable x:TypeArguments="x:String" Name="motivo" />
-      <Variable x:TypeArguments="sd:DataTable" Name="dtPedidos" /><Variable x:TypeArguments="sd:DataTable" Name="dtFornecedores" /><Variable x:TypeArguments="sd:DataTable" Name="dtControle" /><Variable x:TypeArguments="x:Int32" Name="nextRow" /><Variable x:TypeArguments="sd:DataRow" Name="pedidoRow" />
-      <Variable x:TypeArguments="x:String" Name="reportPath" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Relatorios\relatorio_conciliacao.html" /><Variable x:TypeArguments="x:String" Name="csvPath" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Relatorios\relatorio_conciliacao.csv" /><Variable x:TypeArguments="x:String" Name="html" /><Variable x:TypeArguments="x:String" Name="csv" />
+      <Variable x:TypeArguments="x:String" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Entrada" Name="inputFolder" />
+      <Variable x:TypeArguments="x:String" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Processados" Name="processedFolder" />
+      <Variable x:TypeArguments="x:String" Name="sourcePdf" />
+      <Variable x:TypeArguments="x:String" Name="processedPdf" />
+      <Variable x:TypeArguments="x:String" Name="pdfText" />
+      <Variable x:TypeArguments="x:String" Name="numeroFatura" />
+      <Variable x:TypeArguments="x:String" Name="numeroPedido" />
+      <Variable x:TypeArguments="x:String" Name="cnpj" />
+      <Variable x:TypeArguments="x:String" Name="fornecedor" />
+      <Variable x:TypeArguments="x:String" Name="valorTexto" />
+      <Variable x:TypeArguments="x:Decimal" Name="valorFatura" />
+      <Variable x:TypeArguments="x:Decimal" Name="valorPedido" />
+      <Variable x:TypeArguments="x:Decimal" Name="diferenca" />
+      <Variable x:TypeArguments="x:String" Default="ERRO" Name="resultado" />
+      <Variable x:TypeArguments="x:String" Name="motivo" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtPedidos" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtFornecedores" />
+      <Variable x:TypeArguments="sd:DataTable" Name="dtControle" />
+      <Variable x:TypeArguments="x:Int32" Name="nextRow" />
+      <Variable x:TypeArguments="sd:DataRow" Name="pedidoRow" />
+      <Variable x:TypeArguments="x:String" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Relatorios\relatorio_conciliacao.html" Name="reportPath" />
+      <Variable x:TypeArguments="x:String" Default="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Data\Relatorios\relatorio_conciliacao.csv" Name="csvPath" />
+      <Variable x:TypeArguments="x:String" Name="html" />
+      <Variable x:TypeArguments="x:String" Name="csv" />
     </Sequence.Variables>
-    <Assign DisplayName="Selecionar primeiro PDF da entrada"><Assign.To><OutArgument x:TypeArguments="x:String">[sourcePdf]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Directory.GetFiles(inputFolder, "*.pdf").OrderBy(Function(filePath) filePath).First()]</InArgument></Assign.Value></Assign>
-    <Assign DisplayName="Montar destino do PDF processado"><Assign.To><OutArgument x:TypeArguments="x:String">[processedPdf]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Path.Combine(processedFolder, Path.GetFileName(sourcePdf))]</InArgument></Assign.Value></Assign>
-    <ui:ReadPDFText DisplayName="Ler texto real do PDF" FileName="[sourcePdf]" Range="All" Text="[pdfText]" PreserveFormatting="False" />
-    <Assign DisplayName="Extrair numero da fatura"><Assign.To><OutArgument x:TypeArguments="x:String">[numeroFatura]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "FAT-\d{4}-\d{5}").Value]</InArgument></Assign.Value></Assign>
-    <Assign DisplayName="Extrair pedido"><Assign.To><OutArgument x:TypeArguments="x:String">[numeroPedido]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "PO-\d{4}-\d{4}").Value]</InArgument></Assign.Value></Assign>
-    <Assign DisplayName="Extrair CNPJ"><Assign.To><OutArgument x:TypeArguments="x:String">[cnpj]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}").Value]</InArgument></Assign.Value></Assign>
-    <Assign DisplayName="Extrair fornecedor"><Assign.To><OutArgument x:TypeArguments="x:String">[fornecedor]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "Fornecedor:\s*(.+)").Groups(1).Value.Trim]</InArgument></Assign.Value></Assign>
-    <Assign DisplayName="Extrair valor"><Assign.To><OutArgument x:TypeArguments="x:String">[valorTexto]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "Valor Total:\s*R\$\s*([\d,]+\.\d{2})").Groups(1).Value]</InArgument></Assign.Value></Assign>
-    <Assign DisplayName="Converter valor"><Assign.To><OutArgument x:TypeArguments="x:Decimal">[valorFatura]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(valorTexto, NumberStyles.Any, CultureInfo.InvariantCulture)]</InArgument></Assign.Value></Assign>
-    <uea:ReadRange AddHeaders="True" DataTable="[dtPedidos]" DisplayName="Carregar pedidos sem abrir Excel" Range="A1:I21" SheetName="Pedidos" WorkbookPath="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\dados\pedidos\pedidos_compra.xlsx" />
-    <uea:ReadRange AddHeaders="True" DataTable="[dtFornecedores]" DisplayName="Carregar fornecedores sem abrir Excel" Range="A1:E10" SheetName="Fornecedores" WorkbookPath="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\dados\fornecedores\fornecedores.xlsx" />
-    <uea:ReadRange AddHeaders="True" DataTable="[dtControle]" DisplayName="Carregar controle sem abrir Excel" Range="A1:L20" SheetName="Controle" WorkbookPath="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\dados\resultados\controle_conciliacao.xlsx" />
-    <If DisplayName="Remover linhas vazias do controle" Condition="[dtControle.Select(&quot;numero_fatura IS NOT NULL AND numero_fatura &lt;&gt; ''&quot;).Length &gt; 0]"><If.Then><Assign DisplayName="Manter apenas registros preenchidos"><Assign.To><OutArgument x:TypeArguments="sd:DataTable">[dtControle]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="sd:DataTable">[dtControle.Select(&quot;numero_fatura IS NOT NULL AND numero_fatura &lt;&gt; ''&quot;).CopyToDataTable()]</InArgument></Assign.Value></Assign></If.Then></If>
-    <If DisplayName="Validar pedido" Condition="[dtPedidos.Select(&quot;pedido_id = '&quot; + numeroPedido.Replace(&quot;'&quot;,&quot;''&quot;) + &quot;'&quot;).Length = 0]"><If.Then><Sequence><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[resultado]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">PEDIDO_NAO_ENCONTRADO</InArgument></Assign.Value></Assign><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[motivo]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">Pedido não localizado na base</InArgument></Assign.Value></Assign></Sequence></If.Then><If.Else><Sequence>
-      <Assign DisplayName="Selecionar pedido"><Assign.To><OutArgument x:TypeArguments="sd:DataRow">[pedidoRow]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="sd:DataRow">[dtPedidos.Select(&quot;pedido_id = '&quot; + numeroPedido.Replace(&quot;'&quot;,&quot;''&quot;) + &quot;'&quot;)(0)]</InArgument></Assign.Value></Assign>
-      <Assign DisplayName="Ler valor do pedido"><Assign.To><OutArgument x:TypeArguments="x:Decimal">[valorPedido]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:Decimal">[Convert.ToDecimal(pedidoRow(&quot;valor_pedido&quot;), CultureInfo.InvariantCulture)]</InArgument></Assign.Value></Assign><Assign DisplayName="Calcular diferenca"><Assign.To><OutArgument x:TypeArguments="x:Decimal">[diferenca]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:Decimal">[Math.Abs(valorFatura - valorPedido)]</InArgument></Assign.Value></Assign>
-      <If DisplayName="Validar fornecedor ativo" Condition="[dtFornecedores.Select(&quot;cnpj = '&quot; + cnpj.Replace(&quot;'&quot;,&quot;''&quot;) + &quot;' AND status = 'ATIVO'&quot;).Length = 0]"><If.Then><Sequence><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[resultado]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">FORNECEDOR_INVALIDO</InArgument></Assign.Value></Assign><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[motivo]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">Fornecedor ausente ou inativo</InArgument></Assign.Value></Assign></Sequence></If.Then><If.Else><If DisplayName="Verificar duplicidade" Condition="[dtControle.Select(&quot;numero_fatura = '&quot; + numeroFatura.Replace(&quot;'&quot;,&quot;''&quot;) + &quot;' AND resultado IS NOT NULL AND resultado &lt;&gt; ''&quot;).Length &gt; 0]"><If.Then><Sequence><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[resultado]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">FATURA_DUPLICADA</InArgument></Assign.Value></Assign><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[motivo]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">Fatura já processada anteriormente</InArgument></Assign.Value></Assign></Sequence></If.Then><If.Else><If DisplayName="Conciliar valores" Condition="[diferenca &lt;= 0.01D]"><If.Then><Sequence><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[resultado]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">APROVADA</InArgument></Assign.Value></Assign><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[motivo]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">Valores conciliados</InArgument></Assign.Value></Assign></Sequence></If.Then><If.Else><Sequence><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[resultado]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">DIVERGENCIA_VALOR</InArgument></Assign.Value></Assign><Assign><Assign.To><OutArgument x:TypeArguments="x:String">[motivo]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">Valor da fatura difere do pedido</InArgument></Assign.Value></Assign></Sequence></If.Else></If></If.Else></If></If.Else></If>
-    </Sequence></If.Else></If>
-    <Assign DisplayName="Montar CSV"><Assign.To><OutArgument x:TypeArguments="x:String">[csv]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[&quot;numero_fatura,numero_pedido,cnpj,fornecedor,valor_fatura,valor_pedido,diferenca,resultado,motivo&quot; + Environment.NewLine + numeroFatura + &quot;,&quot; + numeroPedido + &quot;,&quot; + cnpj + &quot;,&quot; + fornecedor + &quot;,&quot; + valorFatura.ToString(CultureInfo.InvariantCulture) + &quot;,&quot; + valorPedido.ToString(CultureInfo.InvariantCulture) + &quot;,&quot; + diferenca.ToString(CultureInfo.InvariantCulture) + &quot;,&quot; + resultado + &quot;,&quot; + motivo]</InArgument></Assign.Value></Assign>
-    <Assign DisplayName="Montar HTML"><Assign.To><OutArgument x:TypeArguments="x:String">[html]</OutArgument></Assign.To><Assign.Value><InArgument x:TypeArguments="x:String">[&quot;&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset='utf-8'&gt;&lt;title&gt;Relatório de conciliação&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI;margin:40px;color:#172b4d}table{border-collapse:collapse}th,td{padding:10px;border:1px solid #ccd5e0}th{background:#0b5cab;color:white}.ok{color:#14804a;font-weight:700}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Relatório de conciliação&lt;/h1&gt;&lt;p&gt;Processado em &quot;+DateTime.Now.ToString(&quot;dd/MM/yyyy HH:mm:ss&quot;)+&quot;&lt;/p&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Fatura&lt;/th&gt;&lt;th&gt;Pedido&lt;/th&gt;&lt;th&gt;Fornecedor&lt;/th&gt;&lt;th&gt;Valor&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&quot;+numeroFatura+&quot;&lt;/td&gt;&lt;td&gt;&quot;+numeroPedido+&quot;&lt;/td&gt;&lt;td&gt;&quot;+fornecedor+&quot;&lt;/td&gt;&lt;td&gt;R$ &quot;+valorFatura.ToString(&quot;N2&quot;)+&quot;&lt;/td&gt;&lt;td class='ok'&gt;&quot;+resultado+&quot;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&quot;]</InArgument></Assign.Value></Assign>
-    <ui:WriteTextFile DisplayName="Gerar relatório CSV" FileName="[csvPath]" Text="[csv]" /><ui:InvokePowerShell x:TypeArguments="x:Object" DisplayName="Atualizar controle XLSX sem abrir Excel" CommandText="[&quot;&amp; 'C:\Users\jeova\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Scripts\atualizar_controle.py'&quot;]" IsScript="True" /><ui:MoveFile DisplayName="Mover PDF processado" Path="[sourcePdf]" Destination="[processedPdf]" Overwrite="True" /><ui:WriteTextFile DisplayName="Gerar relatório HTML" FileName="[reportPath]" Text="[html]" />
-    <WriteLine DisplayName="Resultado final" Text="[&quot;CONCILIACAO_CONCLUIDA | &quot; + numeroFatura + &quot; | &quot; + resultado + &quot; | PDF=&quot; + processedPdf + &quot; | RELATORIO=&quot; + reportPath]" />
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign DisplayName="Selecionar primeiro PDF da entrada" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[sourcePdf]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Directory.GetFiles(inputFolder, "*.pdf").OrderBy(Function(filePath) filePath).First()]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Montar destino do PDF processado" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[processedPdf]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Path.Combine(processedFolder, Path.GetFileName(sourcePdf))]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadPDFText DisplayName="Ler texto real do PDF" FileName="[sourcePdf]" sap:VirtualizedContainerService.HintSize="451.2,115.2" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" Password="{x:Null}" PreserveFormatting="False" Range="All" Text="[pdfText]" />
+    <Assign DisplayName="Extrair numero da fatura" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_3">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[numeroFatura]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "FAT-\d{4}-\d{5}").Value]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Extrair pedido" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[numeroPedido]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "PO-\d{4}-\d{4}").Value]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Extrair CNPJ" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_5">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[cnpj]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "\d{2}\.\d{3}\.\d{3}/\d{4}-\d{2}").Value]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Extrair fornecedor" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[fornecedor]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "Fornecedor:\s*(.+)").Groups(1).Value.Trim]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Extrair valor" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_7">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[valorTexto]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Regex.Match(pdfText, "Valor Total:\s*R\$\s*([\d,]+\.\d{2})").Groups(1).Value]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Converter valor" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_8">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Decimal">[valorFatura]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Decimal">[Decimal.Parse(valorTexto, NumberStyles.Any, CultureInfo.InvariantCulture)]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:ReadRange AddHeaders="True" DataTable="[dtPedidos]" DisplayName="Carregar pedidos sem abrir Excel" sap:VirtualizedContainerService.HintSize="451.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_1" Password="{x:Null}" Range="A1:I21" SheetName="Pedidos" WorkbookPath="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\dados\pedidos\pedidos_compra.xlsx" WorkbookPathResource="{x:Null}" />
+    <ui:ReadRange AddHeaders="True" DataTable="[dtFornecedores]" DisplayName="Carregar fornecedores sem abrir Excel" sap:VirtualizedContainerService.HintSize="451.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_2" Password="{x:Null}" Range="A1:E10" SheetName="Fornecedores" WorkbookPath="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\dados\fornecedores\fornecedores.xlsx" WorkbookPathResource="{x:Null}" />
+    <ui:ReadRange AddHeaders="True" DataTable="[dtControle]" DisplayName="Carregar controle sem abrir Excel" sap:VirtualizedContainerService.HintSize="451.2,120" sap2010:WorkflowViewState.IdRef="ReadRange_3" Password="{x:Null}" Range="A1:L20" SheetName="Controle" WorkbookPath="C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\dados\resultados\controle_conciliacao.xlsx" WorkbookPathResource="{x:Null}" />
+    <If Condition="[dtControle.Select(&quot;numero_fatura IS NOT NULL AND numero_fatura &lt;&gt; ''&quot;).Length &gt; 0]" DisplayName="Remover linhas vazias do controle" sap:VirtualizedContainerService.HintSize="451.2,392.8" sap2010:WorkflowViewState.IdRef="If_1">
+      <If.Then>
+        <Assign DisplayName="Manter apenas registros preenchidos" sap:VirtualizedContainerService.HintSize="449.6,142.4" sap2010:WorkflowViewState.IdRef="Assign_9">
+          <Assign.To>
+            <OutArgument x:TypeArguments="sd:DataTable">[dtControle]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="sd:DataTable">[dtControle.Select("numero_fatura IS NOT NULL AND numero_fatura &lt;&gt; ''").CopyToDataTable()]</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+    </If>
+    <If Condition="[dtPedidos.Select(&quot;pedido_id = '&quot; + numeroPedido.Replace(&quot;'&quot;,&quot;''&quot;) + &quot;'&quot;).Length = 0]" DisplayName="Validar pedido" sap:VirtualizedContainerService.HintSize="451.2,1313.6" sap2010:WorkflowViewState.IdRef="If_5">
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="449.6,400" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_10">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[resultado]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">PEDIDO_NAO_ENCONTRADO</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="416,165.6" sap2010:WorkflowViewState.IdRef="Assign_11">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[motivo]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">Pedido não localizado na base</InArgument>
+            </Assign.Value>
+          </Assign>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="449.6,775.2" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign DisplayName="Selecionar pedido" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="sd:DataRow">[pedidoRow]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="sd:DataRow">[dtPedidos.Select("pedido_id = '" + numeroPedido.Replace("'","''") + "'")(0)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Ler valor do pedido" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_13">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[valorPedido]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal">[Convert.ToDecimal(pedidoRow("valor_pedido"), CultureInfo.InvariantCulture)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign DisplayName="Calcular diferenca" sap:VirtualizedContainerService.HintSize="416,174.4" sap2010:WorkflowViewState.IdRef="Assign_14">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Decimal">[diferenca]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Decimal">[Math.Abs(valorFatura - valorPedido)]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <If Condition="[dtFornecedores.Select(&quot;cnpj = '&quot; + cnpj.Replace(&quot;'&quot;,&quot;''&quot;) + &quot;' AND status = 'ATIVO'&quot;).Length = 0]" DisplayName="Validar fornecedor ativo" sap:VirtualizedContainerService.HintSize="416,192" sap2010:WorkflowViewState.IdRef="If_4">
+            <If.Then>
+              <Sequence DisplayName="Then" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_15">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[resultado]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">FORNECEDOR_INVALIDO</InArgument>
+                  </Assign.Value>
+                </Assign>
+                <Assign sap2010:WorkflowViewState.IdRef="Assign_16">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">[motivo]</OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">Fornecedor ausente ou inativo</InArgument>
+                  </Assign.Value>
+                </Assign>
+              </Sequence>
+            </If.Then>
+            <If.Else>
+              <If Condition="[dtControle.Select(&quot;numero_fatura = '&quot; + numeroFatura.Replace(&quot;'&quot;,&quot;''&quot;) + &quot;' AND resultado IS NOT NULL AND resultado &lt;&gt; ''&quot;).Length &gt; 0]" DisplayName="Verificar duplicidade" sap2010:WorkflowViewState.IdRef="If_3">
+                <If.Then>
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_17">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[resultado]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">FATURA_DUPLICADA</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_18">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[motivo]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">Fatura já processada anteriormente</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <If Condition="[diferenca &lt;= 0.01D]" DisplayName="Conciliar valores" sap2010:WorkflowViewState.IdRef="If_2">
+                    <If.Then>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_19">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[resultado]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">APROVADA</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_20">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[motivo]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Valores conciliados</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_21">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[resultado]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">DIVERGENCIA_VALOR</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <Assign sap2010:WorkflowViewState.IdRef="Assign_22">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[motivo]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">Valor da fatura difere do pedido</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Else>
+                  </If>
+                </If.Else>
+              </If>
+            </If.Else>
+          </If>
+        </Sequence>
+      </If.Else>
+    </If>
+    <Assign DisplayName="Montar CSV" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_23">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[csv]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["numero_fatura,numero_pedido,cnpj,fornecedor,valor_fatura,valor_pedido,diferenca,resultado,motivo" + Environment.NewLine + numeroFatura + "," + numeroPedido + "," + cnpj + "," + fornecedor + "," + valorFatura.ToString(CultureInfo.InvariantCulture) + "," + valorPedido.ToString(CultureInfo.InvariantCulture) + "," + diferenca.ToString(CultureInfo.InvariantCulture) + "," + resultado + "," + motivo]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign DisplayName="Montar HTML" sap:VirtualizedContainerService.HintSize="451.2,174.4" sap2010:WorkflowViewState.IdRef="Assign_24">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[html]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">["&lt;!doctype html&gt;&lt;html&gt;&lt;head&gt;&lt;meta charset='utf-8'&gt;&lt;title&gt;Relatório de conciliação&lt;/title&gt;&lt;style&gt;body{font-family:Segoe UI;margin:40px;color:#172b4d}table{border-collapse:collapse}th,td{padding:10px;border:1px solid #ccd5e0}th{background:#0b5cab;color:white}.ok{color:#14804a;font-weight:700}&lt;/style&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;Relatório de conciliação&lt;/h1&gt;&lt;p&gt;Processado em "+DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")+"&lt;/p&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Fatura&lt;/th&gt;&lt;th&gt;Pedido&lt;/th&gt;&lt;th&gt;Fornecedor&lt;/th&gt;&lt;th&gt;Valor&lt;/th&gt;&lt;th&gt;Resultado&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;"+numeroFatura+"&lt;/td&gt;&lt;td&gt;"+numeroPedido+"&lt;/td&gt;&lt;td&gt;"+fornecedor+"&lt;/td&gt;&lt;td&gt;R$ "+valorFatura.ToString("N2")+"&lt;/td&gt;&lt;td class='ok'&gt;"+resultado+"&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;"]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:WriteTextFile ContinueOnError="{x:Null}" DisplayName="Gerar relatório CSV" Encoding="{x:Null}" File="{x:Null}" FileName="[csvPath]" sap:VirtualizedContainerService.HintSize="451.2,166.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_1" Text="[csv]" />
+    <ui:InvokePowerShell x:TypeArguments="x:Object" CommandText="[&quot;&amp; 'C:\Users\jeova\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe' 'C:\Users\jeova\Downloads\Automação de Conciliação de Faturas e Pedidos\rpa\ConciliaFatura\Scripts\atualizar_controle.py'&quot;]" ContinueOnError="{x:Null}" DisplayName="Atualizar controle XLSX sem abrir Excel" sap:VirtualizedContainerService.HintSize="451.2,112" sap2010:WorkflowViewState.IdRef="InvokePowerShell`1_1" Input="{x:Null}" IsScript="True" Output="{x:Null}" PowerShellProcess="PowerShellCore">
+      <ui:InvokePowerShell.Parameters>
+        <scg:Dictionary x:TypeArguments="x:String, InArgument" />
+      </ui:InvokePowerShell.Parameters>
+      <ui:InvokePowerShell.PowerShellVariables>
+        <scg:Dictionary x:TypeArguments="x:String, Argument" />
+      </ui:InvokePowerShell.PowerShellVariables>
+    </ui:InvokePowerShell>
+    <ui:MoveFile ContinueOnError="{x:Null}" Destination="[processedPdf]" DestinationResource="{x:Null}" DisplayName="Mover PDF processado" sap:VirtualizedContainerService.HintSize="451.2,192" sap2010:WorkflowViewState.IdRef="MoveFile_1" Overwrite="True" Path="[sourcePdf]" PathResource="{x:Null}" />
+    <ui:WriteTextFile ContinueOnError="{x:Null}" DisplayName="Gerar relatório HTML" Encoding="{x:Null}" File="{x:Null}" FileName="[reportPath]" sap:VirtualizedContainerService.HintSize="451.2,166.4" sap2010:WorkflowViewState.IdRef="WriteTextFile_2" Text="[html]" />
+    <WriteLine DisplayName="Resultado final" sap:VirtualizedContainerService.HintSize="451.2,113.6" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;CONCILIACAO_CONCLUIDA | &quot; + numeroFatura + &quot; | &quot; + resultado + &quot; | PDF=&quot; + processedPdf + &quot; | RELATORIO=&quot; + reportPath]" TextWriter="{x:Null}" />
   </Sequence>
 </Activity>
